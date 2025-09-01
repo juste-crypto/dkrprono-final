@@ -1,0 +1,84 @@
+:root{
+  --bg1:#0f1226; --bg2:#111836; --acc:#7c4dff; --acc2:#00e5ff; --text:#eaf1ff; --muted:#9fb2d9; --card:#0f1530AA; --glass:#0f153066;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; color:var(--text);
+  background: radial-gradient(1200px 1200px at 10% 10%, #1a2354 0%, transparent 60%),
+              radial-gradient(900px 900px at 90% 30%, #0a6b7f 0%, transparent 70%),
+              linear-gradient(130deg,var(--bg1),var(--bg2));
+  background-size: 200% 200%;
+  animation:bgShift 16s ease-in-out infinite;
+  overflow-x:hidden;
+}
+@keyframes bgShift{0%{background-position:0% 0%}50%{background-position:100% 100%}100%{background-position:0% 0%}}
+
+/* Layout helpers */
+.container{max-width:1100px; margin:0 auto; padding:0 20px}
+section{padding:72px 0}
+
+/* Header */
+header{position:sticky; top:0; z-index:30; backdrop-filter:saturate(1.1) blur(8px); background:linear-gradient(180deg, rgba(9,12,28,.75), rgba(9,12,28,.35) 70%, transparent); border-bottom:1px solid #243b68AA}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+.logo{
+  width:44px; height:44px; border-radius:12px; display:grid; place-items:center;
+  background: conic-gradient(from 0deg at 50% 50%, var(--acc), var(--acc2), #42ff9e, var(--acc));
+  box-shadow:0 8px 30px rgba(0,229,255,.25), inset 0 0 18px rgba(255,255,255,.15);
+  animation:spinPulse 8s linear infinite;
+}
+@keyframes spinPulse{0%{transform:rotate(0)}50%{transform:rotate(180deg) scale(1.03)}100%{transform:rotate(360deg)}}
+.brand-title{font-weight:800; letter-spacing:.5px; font-size:1.25rem; background:linear-gradient(90deg,var(--acc),#42ff9e,var(--acc2),var(--acc)); -webkit-background-clip:text; background-clip:text; color:transparent; background-size:300% 100%; animation:titleShimmer 3.2s linear infinite;}
+@keyframes titleShimmer{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+.cta-nav{display:flex; gap:12px}
+.btn{--p:12px; padding:10px var(--p); border-radius:14px; border:1px solid #28427a; color:var(--text); text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:10px; box-shadow:0 6px 24px rgba(0,0,0,.25); transition:.25s ease; backdrop-filter:blur(6px); background:linear-gradient(180deg,#0e1636cc,#0a112b99)}
+.btn:hover{transform:translateY(-2px); box-shadow:0 10px 34px rgba(0,0,0,.35)}
+.btn.primary{border-color:transparent; background:linear-gradient(90deg,var(--acc),var(--acc2)); box-shadow:0 12px 40px rgba(124,77,255,.35)}
+
+/* Hero */
+.hero{padding-top:36px; padding-bottom:36px}
+.hero-wrap{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center}
+.hero h1{font-size:clamp(34px,5vw,56px); margin:10px 0 10px; line-height:1.05}
+.grad{background:linear-gradient(90deg,#fff,var(--acc2),#42ff9e,var(--acc)); -webkit-background-clip:text; background-clip:text; color:transparent; background-size:300% 100%; animation:titleShimmer 3.2s linear infinite}
+.hero p{color:var(--muted); font-size:1.05rem}
+.hero-card{border:1px solid #254177; background:linear-gradient(180deg,#0c1331cc,#0c133199); padding:20px; border-radius:18px; box-shadow:0 14px 50px rgba(0,0,0,.35)}
+.stat{display:flex; align-items:center; gap:12px; margin-top:8px}
+.chip{padding:6px 12px; border-radius:999px; border:1px solid #2a4a8b; font-weight:600; font-size:.9rem; background:#0f1530cc}
+
+/* Features */
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{border:1px solid #27467f; background:linear-gradient(180deg,#0f1530dd,#0a112bcc); border-radius:18px; padding:18px; box-shadow:0 10px 36px rgba(0,0,0,.35); transition:transform .25s ease, box-shadow .25s ease}
+.card:hover{transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.45)}
+
+/* Pricing */
+.pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.price-card{position:relative; overflow:hidden}
+.price{font-size:2rem; font-weight:800}
+.tag{position:absolute; top:14px; right:-30px; background:linear-gradient(90deg,var(--acc),var(--acc2)); color:#09122a; padding:6px 40px; transform:rotate(20deg); font-weight:800}
+
+/* CTA band */
+.cta-band{border:1px dashed #2a4a8b; background:linear-gradient(180deg,#0c1331dd,#0c1331aa); border-radius:18px; padding:20px; text-align:center}
+
+/* Floating WhatsApp */
+.wa-float{position:fixed; right:18px; bottom:18px; z-index:60}
+.wa-btn{display:inline-flex; align-items:center; gap:10px; padding:14px 16px; border-radius:999px; border:none; cursor:pointer; text-decoration:none; color:#071225; font-weight:800; background:#25D366; box-shadow:0 12px 40px rgba(37,211,102,.35); animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2px) scale(1.03)}}
+
+/* Footer */
+footer{padding:32px 0; color:var(--muted); border-top:1px solid #243b68AA}
+
+/* Reveal animations */
+.reveal{opacity:0; transform:translateY(14px); transition: .6s ease}
+.reveal.visible{opacity:1; transform:none}
+
+/* Responsive */
+@media (max-width:960px){
+  .hero-wrap{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr}
+  .pricing{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+}
